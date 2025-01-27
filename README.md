@@ -47,7 +47,9 @@ This project allows users to input Ethereum wallet address and select specific E
    ```
 2. Install required Python packages:
    ```bash
-   pip install -r Ethertrac/requirements.txt
+   cd Ethertrac
+   
+   pip install -r requirements.txt
    ```
 3. Create a `.env` file and add your Etherscan API key and FLASK_SECRET_KEY:
    ```
