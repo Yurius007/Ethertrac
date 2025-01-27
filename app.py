@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import requests
-import json
 import os
 from dotenv import load_dotenv
 from utils.address_validator import is_address
@@ -8,9 +7,11 @@ from utils.address_validator import is_address
 
 app = Flask(__name__)
 
+load_dotenv()
+
 flask_secret_key = os.getenv("FLASK_SECRET_KEY")
 app.secret_key = flask_secret_key
-load_dotenv()
+
 etherscan_api_key = os.getenv("ethscan_key")
 
 etherscan_api_url = "https://api.etherscan.io/v2/api"
@@ -91,13 +92,8 @@ def result():
                 "fees_usd": "{:.2f}".format(fees_usd_calc),
                 "img_url": chains_img[chain]
             }
-            # print(results)
 
     return render_template('result.html', address=address, results=results, chains=chains_eng, chains_img=chains_img)
 
 if __name__ == '__main__':
     app.run()
-
-
-import secrets
-print(secrets.token_hex(16))
