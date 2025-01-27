@@ -61,7 +61,7 @@ This project allows users to input Ethereum wallet address and select specific E
    ```
 5. Run the application:
    ```bash
-   flask run
+   flask --app app run
    ```
 6. Access the application at `http://127.0.0.1:5000/`.
 
