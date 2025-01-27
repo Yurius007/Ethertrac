@@ -1,0 +1,213 @@
+body {
+    background-color: #f0f0f0;
+    font-family: Outfit, Outfit_Fallback;
+    margin: 0px;
+    padding: 0;
+}
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+.main-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.submit-button:hover {
+    box-shadow: 0 2px 4px #0050a5;
+}
+.submit-button > label {
+    cursor: pointer;
+    font-size: 16px;
+}
+.address-input {
+    font-size: 16px;
+    padding: 10px;
+    margin: 5px;
+    border: 0px solid #b3b3b3;
+    border-radius: 5px;
+    width: 40em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.address-form > input, label , #select-all {
+    font-family: Outfit, Outfit_Fallback;
+}
+#error-message-label {
+    color: rgba(255, 0, 0, 0.705);
+    font-size: 16px;
+    margin: 5px;
+}
+
+
+.chains-selection {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.chains-selection-h3 {
+    font-size: 18px;
+    margin: auto;
+    padding: 10px;
+}
+#select-all {
+    padding: 10px 20px;
+    margin: 20px 0px;
+    border: none;
+}
+.select-all-container {
+    padding: 10px;
+}
+
+.chains-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 75%;
+}
+.chain-button {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    padding: 10px 10px;
+}
+.chain-button > img , label {
+    padding: 0px 5px;
+}
+.chain-button , #select-all{
+    font-size: 16px;
+    /* display: inline-block; */
+
+    margin: 5px;
+    /* border: 1px solid #b3b3b3; */
+    border-radius: 5px;
+    background-color: #ffffff;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.chain-button:hover , #select-all:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.chain-button > label {
+    cursor: pointer;
+}
+.chain-button.selected {
+    /* border: 1px solid #007bff; */
+    background-color: #007bff;
+    color: white;
+    box-shadow: 0 2px 4px #0050a5;
+}
+.chain-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.main {
+    /* margin-top: 5%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+}
+.data-container {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 15px;
+    padding: 10px;
+    /* border: 1px solid #b3b3b3; */
+    border-radius: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+.data-container > h2 {
+    height: max-content;
+}
+.text-data-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.container-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.container-header > h2 {
+    padding: 10px;
+    margin: 0;
+}
+.chain-data-container > p {
+    font-size: 16px;
+    margin: 0;
+    padding: 10px;
+}
+.back-button {
+    width: fit-content;
+    margin-top: 15px;
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    /* border: 1px solid #b3b3b3; */
+    border-radius: 15px;
+    background-color: #007bff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+.back-button:hover {
+    box-shadow: 0 2px 4px #0050a5;
+}
+.no-data {
+    font-size: 24px;
+    margin: 10px;
+}
+/* #fees-chart {
+    height: 200px;
+    width: 200px;
+} */
+.chart-container {
+    height : 512px;
+    width: 512px;
+}
+.info-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    padding: 0px 20px;
+    width: 100%;
+}
+.right-pannel {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.results-h1 {
+    margin: 2.5% 0;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethertrac</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% endblock %}
+</head>
+<body>
+    <div class="hero">
+        <h1>Enter your Ethereum address</h1>
+
+        <form action="/" method="post" class="main-form">
+            <div class="address-form">
+                <input type="text" name="address" placeholder="0x..." required class="address-input">
+
+                <button type="submit" class="submit-button"><label>Submit</label></button>
+            </div>
+
+            {% with messages = get_flashed_messages(category_filter=["error"]) %}
+            {% if messages %}
+                <div id="error-message"><label id="error-message-label" class="error">{{ messages[0] }}</label></div>
+            {% endif %}
+            {% endwith %}
+            <div class="chains-selection">
+                <h3 class="chains-selection-h3">Select chains:</h3>
+
+                <div class="chains-container">
+                    {% for chain_id, chain_name in chains.items() %}
+                        <div class="chain-button{% if chain_id == default_chain %} selected{% endif %}" data-id="{{ chain_id }}">
+
+                            <input oninput="clearError()" type="checkbox" name="chains" value="{{ chain_id }}" id="chain-{{ chain_id }}" style="display: none;"{% if chain_id == default_chain %} checked{% endif %}>
+                            <img src="{{ chains_img[chain_id] }}" alt="ETH" class="chain-icon">
+                            <label for="chain-{{ chain_id }}">{{ chain_name }}</label>
+                            
+                        </div>
+                    {% endfor %}
+                </div>
+
+
+                <div class="select-all-container">
+                    <button type="button" id="select-all"><ladel>Select All</ladel></button>
+                </div>
+            </div>
+
+        </form>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        </script>
+    </div>
+</body>
+</html>

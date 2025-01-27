@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethertrac</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% endblock %}
+</head>
+<body>
+    
+    <div class="main">
+        <h1 class="results-h1">Results for: {{ address }}</h1>
+        <div class="info-container">
+            <div class="right-pannel">
+                <div class="text-data-container">
+                    {% for chain, data in results.items() %}
+                    <div class="{{ chain }}-data-container data-container">
+                        <div class="container-header">
+                            <img src="{{ data.img_url }}" alt="ETH" class="chain-icon">
+                            <h2>{{ chain }}</h2>
+                        </div>
+                        <div class="chain-data-container">
+                            <p>Balance: {{ data.balance_eth }} ETH ($ {{ data.balance_usd }})</p>
+                            <p>Total fees: {{ data.fees_eth }} ETH ($ {{ data.fees_usd }})</p>
+                            <p>Total tx's: {{ data.total_txs }}</p>
+                        </div>
+                    </div>
+                    {% else %}
+                        <p class="no-data">No data available for this address.</p>
+                    {% endfor %}
+                </div>
+                
+                <a href="/" class="back-button">Back</a>
+            </div>
+            <div class="chart-container">
+                <canvas id="feesChart"></canvas>
+            </div>
+        </div>
+    <script>
+        
+        const results = {{ results|tojson }};
+        
+        const labels = Object.keys(results);
+        const feesEth = labels.map(label => parseFloat(results[label].fees_eth));
+
+        const ctx = document.getElementById('feesChart').getContext('2d');
+        // Chart.defaults.font.size = 16;
+        const feesChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Fees in ETH',
+                    data: feesEth,
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.9)',
+                        'rgba(54, 162, 235, 0.9)',
+                        'rgba(255, 206, 86, 0.9)',
+                        'rgba(255, 99, 132, 0.9)',
+                        'rgba(153, 102, 255, 0.9)',
+                        'rgba(255, 159, 64, 0.9)',
+                        'rgba(75, 192, 192, 0.9)',
+                        'rgba(54, 162, 235, 0.9)',
+                        'rgba(255, 206, 86, 0.9)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 255, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 10,
+                            font: {
+                                size: 16,
+                                family: "'Outfit', 'Outfit_Fallback'"
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+        
+
+
+
+    </div>
+</body>
+</html>
