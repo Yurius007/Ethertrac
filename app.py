@@ -96,4 +96,4 @@ def result():
     return render_template('result.html', address=address, results=results, chains=chains_eng, chains_img=chains_img)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0",port=5000)
