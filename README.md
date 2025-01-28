@@ -53,37 +53,43 @@ This project allows users to input Ethereum wallet address and select specific E
    - JavaScript uses Chart.js library to create a pie chart showing fee proportions.
 
 ## Setup Instructions
-1. Initialize a virtual environment:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Yurius007/Ethertrac.git
+   ```
+2. Go to the project directory:
+   ```bash
+   cd Ethertrac
+   ```
+   
+3. Initialize a virtual environment:
    ```bash
    python -m venv venv
 
    source venv/bin/activate   # On Windows: venv\Scripts\activate
    ```
-2. Clone the repository:
-   ```bash
-   git clone https://github.com/Yurius007/Ethertrac.git
-   ```
-3. Install required Python packages:
-   ```bash
-   cd Ethertrac
    
+4. Install required Python packages:
+   ```bash
    pip install -r requirements.txt
    ```
-4. Create a `.env` file and add your Etherscan API key and FLASK_SECRET_KEY:
+   
+5. Create a `.env` file and add your Etherscan API key and FLASK_SECRET_KEY:
    ```
    ethscan_key=YOUR_API_KEY
    FLASK_SECRET_KEY=SECRET_KEY
    ```
+   
    - Etherscan api key can be obtained via [Etherscan page](https://etherscan.io/apis) (authorisation required).
    - Flask secret key is a thing which Flask framework requires for any security related needs. It could be any long random string, you can run this command to get one:
    ```bash
    python -c 'import secrets; print(secrets.token_hex())'
    ```
-5. Run the application:
+6. Run the application:
    ```bash
    flask --app app run
    ```
-6. Access the application at `http://127.0.0.1:5000/`.
+7. Access the application at `http://127.0.0.1:5000/`.
 
 ## Docker setup instructions
 1. Go to the project directory:
