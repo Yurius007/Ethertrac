@@ -106,12 +106,18 @@ This project allows users to input Ethereum wallet address and select specific E
    FLASK_SECRET_KEY=SECRET_KEY
    ```
    ***Instructions how to obtain those keys were mentioned in Setup Instructions #4***
-3. Run the container:
+4. Run the container:
    
    ```bash
    docker run -p 5000:5000 --name ethertrac-flask --env-file .env  yurius007/ethertrac-flask:1.0.RELEASE
    ```
-4. Access the application at `http://127.0.0.1:5000/`.
+   For MacOS:
+   
+   ```bash
+   docker run --platform linux/amd64 -p 5001:5000 --name ethertrac-flask --env-file .env  yurius007/ethertrac-flask:1.0.RELEASE # For MacOS
+   ```
+   
+6. Access the application at `http://127.0.0.1:5000/`.
 
 ## Notes
 - The project is modular, allowing for easy addition of new chains or features.
