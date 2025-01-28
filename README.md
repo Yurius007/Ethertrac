@@ -85,6 +85,34 @@ This project allows users to input Ethereum wallet address and select specific E
    ```
 6. Access the application at `http://127.0.0.1:5000/`.
 
+## Docker setup instructions
+1. Go to the project directory:
+   ```bash
+   cd Ethertrac
+   ```
+2. Build Docker image:
+   
+   ```bash
+   docker build -t yurius007/ethertrac-flask:1.0.RELEASE .
+   ```
+   Or Pull image from Docker Hub repo:
+
+   ```bash
+   docker pull yurius007/ethertrac-flask:1.0.RELEASE
+   ```
+3. Create a `.env` file and add your Etherscan API key and FLASK_SECRET_KEY:
+   ```
+   ethscan_key=YOUR_API_KEY
+   FLASK_SECRET_KEY=SECRET_KEY
+   ```
+   ***Instructions how to obtain those keys were mentioned in Setup Instructions #4***
+3. Run the container:
+   
+   ```bash
+   docker run -p 5000:5000 --name ethertrac-flask --env-file .env  yurius007/ethertrac-flask:1.0.RELEASE
+   ```
+4. Access the application at `http://127.0.0.1:5000/`.
+
 ## Notes
 - The project is modular, allowing for easy addition of new chains or features.
 - Simple address validation happens on the client side for better user experience.
