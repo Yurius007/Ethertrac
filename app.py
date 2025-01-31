@@ -1,18 +1,32 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import requests
+import json
 import os
 from dotenv import load_dotenv
 from utils.address_validator import is_address
-
+from utils.my_secret_manager import get_secret
 
 app = Flask(__name__)
 
-load_dotenv()
+try:
+    secret_responce = get_secret()
+    secrets = json.loads(secret_responce)
 
-flask_secret_key = os.getenv("FLASK_SECRET_KEY")
-app.secret_key = flask_secret_key
+    flask_secret_key = secrets["FLASK_SECRET_KEY"]
+    app.secret_key = flask_secret_key
 
-etherscan_api_key = os.getenv("ethscan_key")
+    etherscan_api_key = secrets["ethscan_key"]
+    print("Secrets loaded successfully")
+except:
+    try:
+        print("Failed to load EC2 secrets. Loading from .env file ...")
+        load_dotenv()
+        etherscan_api_key = os.getenv("ethscan_key")
+        app.secret_key = os.getenv("FLASK_SECRET_KEY")
+    except Exception as e:
+        print("Failed to load secrets from .env file. Exiting ...")
+        print(e)
+        exit(1)
 
 etherscan_api_url = "https://api.etherscan.io/v2/api"
 
@@ -42,7 +56,6 @@ chains_img = {
 
 default_chain = "1"
 
-
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
@@ -56,7 +69,6 @@ def index():
             return redirect(url_for('result', address=address, chains=",".join(selected_chains)))
 
     return render_template('index.html', chains=chains_eng, chains_img=chains_img, default_chain=default_chain)
-
 
 @app.route('/result')
 def result():
@@ -96,4 +108,4 @@ def result():
     return render_template('result.html', address=address, results=results, chains=chains_eng, chains_img=chains_img)
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0",port=5000)
+    app.run(host="0.0.0.0",port=80)
