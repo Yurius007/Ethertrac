@@ -99,12 +99,12 @@ This project allows users to input Ethereum wallet address and select specific E
 2. Build Docker image:
    
    ```bash
-   docker build -t yurius007/ethertrac-flask:1.0.RELEASE .
+   docker build -t yurius007/ethertrac-flask:1.01.RELEASE .
    ```
    Or Pull image from Docker Hub repo:
 
    ```bash
-   docker pull yurius007/ethertrac-flask:1.0.RELEASE
+   docker pull yurius007/ethertrac-flask:1.01.RELEASE
    ```
 3. Create a `.env` file and add your Etherscan API key and FLASK_SECRET_KEY:
    ```
