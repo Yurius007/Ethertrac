@@ -22,15 +22,15 @@ jobs:
       - name: Push Docker image to Docker Hub
         run: docker push yurius007/ethertrac-flask:1.01.RELEASE
 
-      # - name: Deploy to EC2 via SSH
-      #   env:
-      #     PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-      #     HOST: ${{ secrets.EC2_HOST }}
-      #     USER: ${{ secrets.EC2_USER }}
-      #   run: |
-      #     echo "$PRIVATE_KEY" > private_key.pem
-      #     chmod 600 private_key.pem
-      #     ssh -o StrictHostKeyChecking=no -i private_key.pem $USER@$HOST << 'EOF'
-      #       ./deploy.sh
-      #     EOF
-      #     rm -f private_key.pem
+      - name: Deploy to EC2 via SSH
+        env:
+          PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+          HOST: ${{ secrets.EC2_HOST }}
+          USER: ${{ secrets.EC2_USER }}
+        run: |
+          echo "$PRIVATE_KEY" > private_key.pem
+          chmod 600 private_key.pem
+          ssh -o StrictHostKeyChecking=no -i private_key.pem $USER@$HOST << 'EOF'
+            ./deploy.sh
+          EOF
+          rm -f private_key.pem
