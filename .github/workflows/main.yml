@@ -28,7 +28,9 @@ jobs:
           HOST: ${{ secrets.EC2_HOST }}
           USER: ${{ secrets.EC2_USER }}
         run: |
+          sudo echo "$PRIVATE_KEY"
           sudo echo "$PRIVATE_KEY" > private_key.pem
-          sudo chmod 600 private_key.pem
+          ssh-keygen -lf private_key.pem
+          sudo chmod 400 private_key.pem
           ssh -o StrictHostKeyChecking=no -i private_key.pem $USER@$HOST "./deploy.sh"
           rm -f private_key.pem
