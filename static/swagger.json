@@ -1,0 +1,50 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Ethereum Tracker API",
+        "description": "API for tracking Ethereum wallet transactions and gas fees expenses",
+        "version": "1.0.0"
+    },
+    "basePath": "/",
+    "schemes": ["http"],
+    "produces": ["application/html"],
+    "tags": [
+        {
+            "name": "result",
+            "description": "Get balance, transactions, total fees spent"
+        }
+    ],
+    "paths": {
+            "/result": {
+                "get": {
+                    "tags": ["result"],
+                    "summary": "Get balance, transactions, total fees spent",
+                    "parameters": [
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "type": "string",
+                        "required": true,
+                        "description": "Ethereum address"
+                    },
+                    {
+                        "name": "chains",
+                        "in": "query",
+                        "type": "string",
+                        "required": true,
+                        "description": "Chains id's separated by comma"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+  

@@ -33,6 +33,11 @@
                     </div>
                     {% else %}
                         <p class="no-data">No data available for this address.</p>
+                        <style>
+                            .chart-container {
+                                display: none;
+                            }
+                        </style>
                     {% endfor %}
                 </div>
                 
@@ -93,10 +98,6 @@
             }
         });
     </script>
-        
-
-
-
     </div>
 </body>
 </html>

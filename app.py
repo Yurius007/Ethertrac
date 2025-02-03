@@ -5,6 +5,7 @@ import os
 from dotenv import load_dotenv
 from utils.address_validator import is_address
 from utils.my_secret_manager import get_secret
+from flask_swagger_ui import get_swaggerui_blueprint
 
 app = Flask(__name__)
 
@@ -29,6 +30,12 @@ except:
         exit(1)
 
 etherscan_api_url = "https://api.etherscan.io/v2/api"
+
+SWAGGER_URL = "/swagger"
+API_URL = "/static/swagger.json"
+
+swaggerui_blueprint = get_swaggerui_blueprint(SWAGGER_URL, API_URL, config={"app_name": "Ethereum Tracker API"})
+app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
 
 chains_eng = {
     "1": "Ethereum",
